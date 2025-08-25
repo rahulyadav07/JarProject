@@ -1,4 +1,4 @@
-package com.rahulyadav.jarproject.ui.activity
+package com.rahulyadav.jarproject.ui.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavigationBasedApp()
+                    ScreenNavigator()
                 }
             }
         }

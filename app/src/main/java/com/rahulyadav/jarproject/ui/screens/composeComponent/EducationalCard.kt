@@ -1,23 +1,21 @@
-package com.rahulyadav.jarproject.ui.activity.composeComponent
+package com.rahulyadav.jarproject.ui.screens.composeComponent
 
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FiniteAnimationSpec
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -31,25 +29,20 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.toColorInt
 import coil.compose.AsyncImage
-import com.rahulyadav.jarproject.R
 import com.rahulyadav.jarproject.model.EducationCard
+import com.rahulyadav.jarproject.ui.theme.commonTextStyle
 
 @Composable
 fun EducationCard(
@@ -59,9 +52,6 @@ fun EducationCard(
     collapseExpandIntroInterval: Int,
     bottomToCenterTranslationInterval: Int,
     index: Int,
-    isTilted :Boolean,
-    visibleItems:Int,
-
     firstTimeAnimation: Boolean,
     onCardClick: () -> Unit
 ) {
@@ -78,7 +68,17 @@ fun EducationCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable { if (!isExpanded) onCardClick() },
+            .clickable { if (!isExpanded) onCardClick() }
+            .border(
+                width = 1.dp,
+                brush = Brush.linearGradient(
+                    listOf(
+                        Color(card.strokeStartColor.toColorInt()),
+                        Color(card.strokeEndColor.toColorInt())
+                    )
+                ),
+                shape = RoundedCornerShape(if (isExpanded) 16.dp else 50.dp)
+            ),
         colors = CardDefaults.cardColors(
             containerColor = Color(android.graphics.Color.parseColor(card.backGroundColor))
         ),
@@ -101,7 +101,7 @@ fun EducationCard(
                     fadeIn(animationSpec) + expandVertically(animationSpec = animationSpec2),
                 exit = fadeOut(animationSpec) + shrinkVertically(animationSpec = animationSpec2)
             ) {
-                CardHeader(card, isExpanded,index= index, firstTimeAnimation)
+                CardHeader(card, isExpanded, index = index, firstTimeAnimation)
             }
 
             AnimatedVisibility(
@@ -151,13 +151,8 @@ private fun CardHeader(
             text = card.collapsedStateText,
             color = Color.White,
             modifier = Modifier.weight(1f),
-            style = androidx.compose.ui.text.TextStyle(
-                fontFamily = FontFamily(Font(R.font.inter_black_bold)),
-                fontWeight = FontWeight.W700,
-                fontSize = 14.sp,
-                lineHeight = 20.sp,
-                textAlign = TextAlign.Center
-            )
+            fontSize = 14.sp,
+            style = commonTextStyle
         )
 
         Icon(
@@ -185,8 +180,7 @@ private fun ExpandableContent(
                 .fillMaxWidth()
                 .height(300.dp)
                 .padding(12.dp)
-                .clip(RoundedCornerShape(12.dp))
-            ,
+                .clip(RoundedCornerShape(12.dp)),
             contentScale = ContentScale.Crop
 
         )
@@ -198,21 +192,9 @@ private fun ExpandableContent(
             color = Color.White,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            style = androidx.compose.ui.text.TextStyle(
-                fontFamily = FontFamily(Font(R.font.inter_black_bold)),
-                fontWeight = FontWeight.W700,
-                fontStyle = FontStyle.Normal,
-                fontSize = 20.sp,
-                lineHeight = 20.sp,
-                letterSpacing = 0.sp,
-                textAlign = TextAlign.Center,
-                lineHeightStyle = LineHeightStyle(
-                    alignment = LineHeightStyle.Alignment.Center,
-                    trim = LineHeightStyle.Trim.None
-                )
-            )
+            fontSize = 20.sp,
+            style = commonTextStyle
         )
     }
-
 
 }

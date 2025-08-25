@@ -1,8 +1,6 @@
 package com.rahulyadav.jarproject.repository
 
-import android.util.Log
 import com.rahulyadav.jarproject.model.ManualBuyEducationData
-import com.rahulyadav.jarproject.model.OnBoardingCard
 import com.rahulyadav.jarproject.network.OnboardingApiService
 
 
@@ -13,16 +11,14 @@ class OnBoardingRepository(
         return try {
             val response = apiService.getOnboardingData()
             if (response.isSuccessful && response.body() != null) {
-                Log.d("Harit", "getOnboardingEducationData: ")
+
                 val educationData = response.body()?.data?.manualBuyEducationData
                 Result.success(educationData)
             } else {
-                Log.d("Harit", "getOnboardingEducationData: errro ${response.errorBody()}")
+
                 Result.failure(Exception("Failed to load onboarding data"))
             }
         } catch (e: Exception) {
-            Log.d("Harit", "getOnboardingEducationData: errro ${e.message}")
-
             Result.failure(e)
         }
     }
