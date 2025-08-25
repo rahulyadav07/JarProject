@@ -101,7 +101,7 @@ fun EducationCard(
                     fadeIn(animationSpec) + expandVertically(animationSpec = animationSpec2),
                 exit = fadeOut(animationSpec) + shrinkVertically(animationSpec = animationSpec2)
             ) {
-                CardHeader(card, isExpanded, index = index, firstTimeAnimation)
+                CardHeader(card, isExpanded)
             }
 
             AnimatedVisibility(
@@ -126,8 +126,6 @@ fun EducationCard(
 private fun CardHeader(
     card: EducationCard,
     isExpanded: Boolean,
-    index: Int,
-    firstTimeAnimation: Boolean
 ) {
 
 

@@ -100,9 +100,7 @@ class OnBoardingViewModel(
 
     fun updateBackgroundColors(startColor: String? = null, endColor: String? = null) {
         try {
-            val startColor = Color(startColor?.toColorInt()?:0)
-            val endColor = Color(endColor?.toColorInt()?:0)
-            _backgroundColors.value = listOf(startColor, endColor)
+            _backgroundColors.value = listOf(Color(startColor?.toColorInt()?:0), Color(endColor?.toColorInt()?:0))
         } catch (e: Exception) {
             _backgroundColors.value = listOf(Color.Black, Color.White)
         }
