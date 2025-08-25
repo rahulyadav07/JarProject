@@ -4,7 +4,7 @@
 [![Android](https://img.shields.io/badge/Android-Compose-blue)](https://developer.android.com/jetpack/compose)  
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-**JarProject** is an Android application built using **MVVM architecture** with **Jetpack Compose**, **Kotlin**, **Retrofit**, **Room**, and **Kotlin Coroutines & Flow**. It demonstrates modern Android app development practices with a clean architecture, reactive UI, offline-first caching, and smooth user experience.  
+**JarProject** is an Android application built using **MVVM architecture** with **Jetpack Compose**, **Kotlin**, **Retrofit**, **Room**, and **Kotlin Coroutines & Flow**. It demonstrates modern Android app development practices with a clean architecture, reactive UI, and smooth user experience.  
 
 ---
 
@@ -14,7 +14,6 @@
 - **Architecture:** MVVM (Model-View-ViewModel)  
 - **UI:** Jetpack Compose  
 - **Networking:** Retrofit, OkHttp  
-
 - **Concurrency:** Kotlin Coroutines & Flow  
 - **Build System:** Gradle  
 
