@@ -6,7 +6,7 @@ import androidx.core.graphics.toColorInt
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rahulyadav.jarproject.model.EducationCard
-import com.rahulyadav.jarproject.repository.OnBoardingRepository
+import com.rahulyadav.jarproject.repository.IOnBoardingRepository
 import com.rahulyadav.jarproject.repository.OnboardingUiState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class OnBoardingViewModel(
-    private val repository: OnBoardingRepository
+    private val repository: IOnBoardingRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<OnboardingUiState>(OnboardingUiState.Loading)

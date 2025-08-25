@@ -84,7 +84,7 @@ fun ScreenNavigator(viewModel: OnBoardingViewModel = viewModel {
                     OnboardingScreen(
                         educationData = (uiState as? OnboardingUiState.Success)?.educationData,
                         onNavigateToLanding = {
-                            // Trigger shutter animation
+
                             onboardingVisible = false
                             showLandingScreen = true
                             viewModel.updateBackgroundColors("#22034a","#22034a")

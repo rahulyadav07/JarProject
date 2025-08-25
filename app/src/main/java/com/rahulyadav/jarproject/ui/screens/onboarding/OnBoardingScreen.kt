@@ -121,11 +121,7 @@ fun OnboardingScreen(
             ) + fadeIn(animationSpec = tween(durationMillis = 800)),
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {
-            RoundedCTA(
-                text = educationData?.actionText,
-                lottieUrl = educationData?.ctaLottie,
-                onClick = onNavigateToLanding
-            )
+            RoundedCTA(lottieUrl = educationData?.ctaLottie, educationData?.saveButtonCta , onClick = onNavigateToLanding)
         }
     }
 }

@@ -6,8 +6,8 @@ import com.rahulyadav.jarproject.network.OnboardingApiService
 
 class OnBoardingRepository(
     private val apiService: OnboardingApiService
-) {
-    suspend fun getOnboardingEducationData(): Result<ManualBuyEducationData?> {
+):IOnBoardingRepository {
+    override suspend fun getOnboardingEducationData(): Result<ManualBuyEducationData?> {
         return try {
             val response = apiService.getOnboardingData()
             if (response.isSuccessful && response.body() != null) {
