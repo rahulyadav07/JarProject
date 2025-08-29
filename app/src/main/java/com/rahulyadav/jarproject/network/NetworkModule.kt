@@ -3,6 +3,7 @@ package com.rahulyadav.jarproject.network
 import com.rahulyadav.jarproject.repository.OnBoardingRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import com.rahulyadav.jarproject.network.OnboardingApiService
 
 object NetworkModule {
 
